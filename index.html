@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Кофейня от Марата | Заказать кофе</title>
+  <title>Кофейня | Заказ кофе</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
   <style>
@@ -118,7 +118,7 @@
     <h1>Капучино Стронг</h1>
     <p>Насладитесь насыщенным вкусом кофе — выберите напиток и получите его от нашего бариста Марата!</p>
 
-    <button class="button" onclick="showCoffeeOptions()">Заказать кофе от Марата</button>
+    <button class="button" onclick="showCoffeeOptions()">Заказать кофе</button>
 
     <select id="coffeeSelect" class="hidden" onchange="showSizeOptions()">
       <option disabled selected>Выберите кофе</option>
@@ -156,7 +156,7 @@
     function showSizeOptions() {
       selectedCoffee = document.getElementById('coffeeSelect').value;
       const sizeSelect = document.getElementById('sizeSelect');
-	  sizeSelect.classList.remove('hidden');
+	    sizeSelect.classList.remove('hidden');
       sizeSelect.classList.add('visible');
     }
 
@@ -176,14 +176,6 @@
       modalContent.style.backgroundImage = url('${gifs[selectedCoffee] || gifs["Капучино Стронг"]}');
 
       modal.classList.add('show');
-
-      // Отправка SMS (если настроено)
-      const size = document.getElementById('sizeSelect').value;
-      fetch('https://ВАШ_СЕРВЕР/send_sms.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ coffee: selectedCoffee, size })
-      });
 
       setTimeout(() => {
         modal.classList.remove('show');
